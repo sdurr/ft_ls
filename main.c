@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/08 18:03:11 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/08 18:14:02 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int		main(int argc, char **argv)
 		while (tab[i])
 		{
 			if (tab[i][0] != '.')
-				printf("%s\n", tab[i]);
+			{
+				ft_putstr(tab[i]);
+				ft_putchar('\n');
+			}
 			i++;
 		}
 	}
