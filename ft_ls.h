@@ -6,13 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/08 15:29:48 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/08 17:58:37 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-n
+
 #ifndef		FT_LS_H
 # define	FT_LS_H
 
-void	ft_ls_argv(char *argv, int argc);
-void	ft_ls(char *argv, int argc);
+char	**ft_ls(char **argv);
+int		ft_ls_count_files(char **argv);
 #endif
