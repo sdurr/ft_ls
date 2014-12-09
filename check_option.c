@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 10:39:21 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 13:59:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 14:49:57 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ char		**check_option(char **argv, int argc)
 	if (argv[i][j] == 'a' && argv[i][j + 1] == '\0')
 		tab = ft_ls_option_a(argv, argc);
 	else if (argv[i][j] == 'l' && argv[i][j + 1] == '\0')
-		tab = ft_ls_option_l(argv, argc, tab);
+		ft_putstr("faire l'option -l");
+	else if (argv[i][j] == 'R' && argv[i][j + 1] == '\0')
+		tab = ft_ls_option_R(argv, argc);
 	else if ((argv[i][j] == 'a' && argv[i][j + 1] != 'l')
 			 || (argv[i][j] == 'a' && argv[i][j + 1] != 'R')
 			 ||(argv[i][j] == 'r' && argv[i][j + 1] != 't'))
@@ -39,6 +41,13 @@ char		**check_option(char **argv, int argc)
 		tab[0] = ft_strdup("ls: illegal option --");
 		tab[0] = ft_strjoin(tab[0], tmp);
 		tab[0] = ft_strjoin(tab[0], "\nusage: ls [-ABCFGHLOPRSTUWabcdefghijklmnopqrstuwx1] [file ...]");
+	}
+	else
+	{
+		if (!(tab = (char **)malloc(sizeof(char *) * 2)))
+			return (0);
+			tab[0] = ft_strdup("ls: illegal option --");
+			tab[1] = NULL;
 	}
 	return (tab);
 }

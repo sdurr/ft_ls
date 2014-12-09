@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 13:28:00 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 14:26:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
 
 char 		**ft_ls_argv(char **argv, int argc)
 {

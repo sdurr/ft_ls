@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls_argv.c                                       :+:      :+:    :+:   */
+/*   ft_ls_count_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 14:45:23 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/08 16:01:31 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/09 15:04:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,39 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
 
-char 		**ft_ls_option_l(char **argv, int argc, char **tab)
+int		ft_ls_count_files_R(char **argv)
 {
-	argv[1] = "past";
-	tab = ft_ls_argv(argv, argc);
+	int i;
+	int j;
+	DIR *dirp;
+	struct dirent *read;
 
-	return (tab);
+	j = 1;
+	i = 0;
+	if (!argv[j+1])
+	{
+		if ((dirp = opendir(".")) != NULL)
+			while ((read = readdir(dirp)) != NULL)
+				i++;
+	}
+	else
+	{
+		i = 0;
+		while (argv[j])
+		{
+			if ((dirp = opendir(argv[j])) != NULL)
+			{
+				while ((read = readdir(dirp)) != NULL)
+				{
+					ft_putstr(read -> d_name);
+					ft_putchar ('\n');
+					i++;
+				}
+			}
+			j++;
+		}
+	}
+	ft_putnbr(i);
+	return(i);
 }
