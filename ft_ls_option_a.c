@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 10:52:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 11:46:27 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char 		**ft_ls_argv(char **argv, int argc)
+char 		**ft_ls_option_a(char **argv, int argc)
 {
 	DIR *dirp;
 	struct dirent *read;
@@ -24,31 +24,28 @@ char 		**ft_ls_argv(char **argv, int argc)
 	int j;
 	int i;
 
-	i = 1;
+	i = 2;
 	j = 0;
 	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) +1)))
 		return (NULL);
-	if (argv[i][j] == '-')
-	{
-		tab = check_option(argv, argc);
-		return (tab);
-	}
-		while (argv[i])
+	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 		{
 			if (argc > 2)
-				if (!(tab[j++] = ft_strjoin(argv[i], ":")))
+			{
+				if (!(tab[j] = ft_strjoin(argv[i], ":")))
 					return (NULL);
+				j++;
+			}
 			while ((read = readdir(dirp)) != NULL) // lecture argv
 			{
 				if (!(tab[j] = ft_strdup(read -> d_name)))
 					return (NULL);
-				if (tab[j][0] != '.') // pas de fichier cachees
 					j++;
 			}
 		}
-		else if (argv[i][0] != '-')
+		else
 		{
 			tab[j] = ft_strjoin("ft_ls: ", argv[i]);
 			tab[j] = ft_strjoin(tab[j], " No such file or directory");

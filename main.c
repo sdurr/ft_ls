@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/08 18:14:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 11:45:30 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,14 @@ int		main(int argc, char **argv)
 	i = 0;
 	tab = NULL;
 	if (argc == 1)
-	{
 		tab = ft_ls(argv);
-		while (tab[i])
-		{
-			if (tab[i][0] != '.')
-			{
-				ft_putstr(tab[i]);
-				ft_putchar('\n');
-			}
-			i++;
-		}
+	else
+		tab = ft_ls_argv(argv, argc);
+	while (tab[i])
+	{
+			ft_putstr(tab[i]);
+			ft_putchar('\n');
+		i++;
 	}
 	return (0);
 }
