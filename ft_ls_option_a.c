@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 11:59:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 16:03:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,39 @@ char 		**ft_ls_option_a(char **argv, int argc)
 		}
 		i++;
 	}
-	i = 0;
+	i = 2;
 	while (argv[i])
 	{
-		if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
-		{
-			if (argc > 2)
+			if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 			{
-				if (!(tab[j] = ft_strjoin(argv[i], ":")))
-					return (NULL);
-				j++;
+				if (argc > 2)
+				{
+					if (!(tab[j] = ft_strjoin(argv[i], ":")))
+						return (NULL);
+					j++;
+				}
+				while ((read = readdir(dirp)) != NULL) // lecture argv
+				{
+					if (!(tab[j] = ft_strdup(read -> d_name)))
+						return (NULL);
+					j++;
+				}
 			}
+			i++;
+	}
+			ft_putstr("test1");
+	if (!argv[2])
+	{
+		ft_putstr("test1");
+		if ((dirp = opendir(".")) != NULL) // ouverture argv[1] pointeur sur flux
+		{
 			while ((read = readdir(dirp)) != NULL) // lecture argv
 			{
 				if (!(tab[j] = ft_strdup(read -> d_name)))
 					return (NULL);
-					j++;
+				j++;
 			}
 		}
-		i++;
 	}
 	tab[j] = NULL;
 	return (tab);

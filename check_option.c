@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 10:39:21 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 14:49:57 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 16:17:09 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char		**check_option(char **argv, int argc)
 
 	i = 1;
 	j = 1;
-	argc = argc -1;
 	if (argv[i][j] == 'a' && argv[i][j + 1] == '\0')
 		tab = ft_ls_option_a(argv, argc);
 	else if (argv[i][j] == 'l' && argv[i][j + 1] == '\0')
