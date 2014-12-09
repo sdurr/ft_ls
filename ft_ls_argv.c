@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 10:52:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/09 13:28:00 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,18 @@ char 		**ft_ls_argv(char **argv, int argc)
 		tab = check_option(argv, argc);
 		return (tab);
 	}
-		while (argv[i])
+	while (argv[i])
+	{
+		if ((dirp = opendir(argv[i])) == NULL)
+		{
+			tab[j] = ft_strjoin("ft_ls: ", argv[i]);
+			tab[j] = ft_strjoin(tab[j], " No such file or directory");
+			j++;
+		}
+		i++;
+	}
+	i = 1;
+	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 		{
@@ -47,12 +58,6 @@ char 		**ft_ls_argv(char **argv, int argc)
 				if (tab[j][0] != '.') // pas de fichier cachees
 					j++;
 			}
-		}
-		else if (argv[i][0] != '-')
-		{
-			tab[j] = ft_strjoin("ft_ls: ", argv[i]);
-			tab[j] = ft_strjoin(tab[j], " No such file or directory");
-			j++;
 		}
 		i++;
 	}
