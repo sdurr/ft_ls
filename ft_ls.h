@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/11 11:38:22 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/11 13:09:16 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_ls_argv(char **argv, int argc); // s'il y a des argument en parametre
 char	**check_option(); // check quel option et renvoi vers la fonction
 char	**ft_ls_option_a(char **argv, int argc, int nb); // option -a
 char	**ft_ls_option_l(char **argv, int argc, int nb); //option -l
-char	**ft_ls_option_R(char **argv, int argc); // option -R
+char	**ft_ls_option_r(char **tab); // option -R
 int		ft_ls_count_files(char **argv); // conte le nb de fichier dossiers
 int		ft_ls_count_files_R(char **argv); //conte nb files dock and sous files
 int		test_option(char **argv, int *nb); // test options with bitwise
