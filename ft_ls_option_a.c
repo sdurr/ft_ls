@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 16:03:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/11 12:52:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char 		**ft_ls_option_a(char **argv, int argc)
+char 		**ft_ls_option_a(char **argv, int argc, int nb)
 {
 	DIR *dirp;
 	struct dirent *read;
@@ -24,9 +24,9 @@ char 		**ft_ls_option_a(char **argv, int argc)
 	int j;
 	int i;
 
-	i = 2;
+	i = 0;
 	j = 0;
-	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) +1)))
+	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) + 1)))
 		return (NULL);
 	while (argv[i])
 	{
@@ -38,15 +38,14 @@ char 		**ft_ls_option_a(char **argv, int argc)
 		}
 		i++;
 	}
-	i = 2;
+	i = 0;
 	while (argv[i])
 	{
 			if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 			{
-				if (argc > 2)
+				if (argc > nb)
 				{
-					if (!(tab[j] = ft_strjoin(argv[i], ":")))
-						return (NULL);
+					tab[j] = ft_strjoin(argv[i], ":");
 					j++;
 				}
 				while ((read = readdir(dirp)) != NULL) // lecture argv
@@ -58,10 +57,9 @@ char 		**ft_ls_option_a(char **argv, int argc)
 			}
 			i++;
 	}
-			ft_putstr("test1");
-	if (!argv[2])
+	i = 0;
+	if (!argv[i])
 	{
-		ft_putstr("test1");
 		if ((dirp = opendir(".")) != NULL) // ouverture argv[1] pointeur sur flux
 		{
 			while ((read = readdir(dirp)) != NULL) // lecture argv

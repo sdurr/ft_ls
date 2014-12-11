@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 14:45:23 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/11 12:39:27 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 char 		**ft_ls_option_l(char **argv, int argc, char **tab)
 {
-	argv[1] = "past";
-	tab = ft_ls_argv(argv, argc);
 
 	return (tab);
 }

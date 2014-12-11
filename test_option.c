@@ -6,14 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 12:48:04 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/10 13:41:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/11 10:43:32 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
 
-int		test_option(char **argv)
+int		test_option(char **argv, int *nb)
 {
 	unsigned int flags;
 	int i;
@@ -21,7 +21,7 @@ int		test_option(char **argv)
 
 	i = 1;
 	j = 0;
-
+	flags = 0;
 	while (argv[i]) // nb arguments
 	{
 		if (argv[i][j] == '-')
@@ -39,13 +39,16 @@ int		test_option(char **argv)
 					flags = flags | OPT_R;
 				else if (argv[i][j] == 'R')
 					flags = flags | OPT_R_R;
+				else
+					return (flags);
 				j++;
 			}
 		}
 		else
-			return(0); // si ce n'est plus des flags return (fonction with flags)
+			return (flags); // si ce n'est plus des flags return (fonction with flags)
 		j = 0;
 		i++;
+		*nb = *nb + 1;
 	}
 	return (flags); // pas d'argv a pars les flags
 }

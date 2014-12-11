@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/10 10:46:30 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/11 12:46:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ char 		**ft_ls_argv(char **argv, int argc)
 	int j;
 	int i;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) +1)))
 		return (NULL);
 	if (argv[i][j] == '-')
-	{
-		tab = check_option(argv, argc);
-		return (tab);
-	}
+		return (check_option(argv[i]));
 	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) == NULL)
@@ -42,7 +39,7 @@ char 		**ft_ls_argv(char **argv, int argc)
 		}
 		i++;
 	}
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
