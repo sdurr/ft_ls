@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 16:01:31 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/09 15:46:39 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/12 14:08:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_ls_count_files_R(char **argv)
+int		ft_ls_count_files_R(char **argv, int nb_argv, int argc)
 {
 	int i;
 	int j;
@@ -25,12 +25,14 @@ int		ft_ls_count_files_R(char **argv)
 
 	j = 1;
 	i = 0;
-	if (!argv[j+1])
+	if ((nb_argv - argc) == 0)
 	{
 		if ((dirp = opendir(".")) != NULL)
 			while ((read = readdir(dirp)) != NULL)
+			{
 				i++;
-	}
+				nb_argv++;
+			}
 	else
 	{
 		i = 0;
@@ -49,6 +51,5 @@ int		ft_ls_count_files_R(char **argv)
 			j++;
 		}
 	}
-	ft_putnbr(i);
 	return(i);
 }
