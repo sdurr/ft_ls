@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 11:25:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/15 15:07:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define OPT_R_R 64
 
 char	**ft_ls(char **argv); // s'il n'y a pas d'argv en parametre
-char	**ft_ls_argv(char **argv, int argc); // s'il y a des argument en parametre
+char	**ft_ls_argv(char **argv, int argc, int nb_argv); // s'il y a des argument en parametre
 void	check_option_illegal(char *argv); // check quel option et renvoi vers la fonction
 char	**ft_ls_option_a(char **argv, int argc, int nb); // option -a
 void	ft_ls_option_l_permissions(char **tab); //option -l
@@ -29,6 +29,7 @@ int		ft_count_sous_dossiers(char *tab); // count le nom de dossier dans un dossi
 int		ft_ls_count_files(char **argv); // conte le nb de fichier dossiers
 int		ft_ls_count_files_R(char **argv, int nb_argv, int argc); //conte nb files dock and sous files
 int		test_option(char **argv, int *nb); // test options with bitwise
+char	**ft_tab_argv_open(char **tab);
 void	ft_print_tab(char **tab);
 void	ft_noms_proprietaire(char *av);
 void	ft_time(char *av);

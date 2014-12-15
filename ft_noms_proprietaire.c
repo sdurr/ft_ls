@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 10:28:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 11:17:37 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/15 16:11:21 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 #include <grp.h>
 #include <sys/types.h>
 
-void	ft_noms_proprietaire(char *av)
+void 	ft_noms_proprietaire(char *av)
 {
 	struct passwd *result;
 	struct stat sb;
 	struct group *group;
 	int c;
 
+	ft_putstr("test");
 	stat(av, &sb);
 	result = getpwuid(sb.st_uid);
 	ft_putstr(result -> pw_name);

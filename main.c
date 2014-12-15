@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 10:19:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/15 16:14:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,35 @@ int		main(int argc, char **argv)
 	if ((flags = test_option(argv, &nb_argv)) == -1)
 		return (0);
 	tab_argv = copy_argv(argv, nb_argv, argc);
-	tab = ft_ls(argv);
+	tab = ft_ls_argv(tab_argv, argc, nb_argv);
 	if (flags & OPT_A)
 		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
-/*	if (flags & OPT_R_R)
+	if (tab_argv[0])
 	{
-		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
-		tab = ft_ls_option_r_r(tab_argv, tab, nb_argv, argc);
-		}*/
-	if (flags & OPT_L)
-		ft_ls_option_l_permissions(tab);
+			if (flags & OPT_R)
+				tab = ft_ls_option_r(tab_argv);
+			if (flags & OPT_L)
+			{
+				ft_ls_option_l_permission(tab);
+			}
+			if (flags & OPT_T)
+				tab = ft_ls_option_t(argv, tab);
+			else
+				ft_print_tab(tab);
+	}
 	else
-	ft_print_tab(tab);
+	{
+		if (flags & OPT_R)
+			tab = ft_ls_option_r(tab);
+		if (flags & OPT_L)
+		{
+			ft_ls_option_l_permissions(tab);
+		}
+		else
+			ft_print_tab(tab);
+	}
 
-	//if (flags & OPT_T)
-	///tab = ft_ls_option_t(argv, tab);
 //	ft_print_tab(tab);
-	if (flags & OPT_R)
-		tab = ft_ls_option_r(tab);
 		return (0);
 }
 
