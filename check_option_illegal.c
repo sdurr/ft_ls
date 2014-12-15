@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_sous_dossiers.c                           :+:      :+:    :+:   */
+/*   check_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/12 14:09:12 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 10:26:45 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/08 10:39:21 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/15 10:10:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include "libft.h"
-#include <dirent.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int 		ft_count_sous_dossiers(char *tab)
+void		check_option_illegal(char *argv)
 {
-	int i;
-	DIR *dirp;
-	struct dirent *read;
-
-	i = 0;
-	if ((dirp = opendir(tab)) != NULL)
-	{
-		while ((read = readdir(dirp)) != NULL)
-			i++;
-	}
-	if (i > 0)
-		return (i);
-	else
-		return (1);
-	return (0);
+	ft_putstr("ls: illegal option -- ");
+	ft_putchar(argv[1]);
+	ft_putstr("\nusage: ls [-ABCFGHLOPRSTUWabcdefghijklmnopqrstuwx1] [file ...]");
+	ft_putchar ('\n');
 }

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 16:01:31 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/12 14:08:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/15 10:01:36 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_ls_count_files_R(char **argv, int nb_argv, int argc)
 				i++;
 				nb_argv++;
 			}
+	}
 	else
 	{
 		i = 0;
