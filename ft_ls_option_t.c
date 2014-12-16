@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls_option_t.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/16 08:43:54 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/16 09:07:28 by sdurr            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <sys/stat.h>
+#include "ft_ls.h"
+#include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+char	**ft_ls_option_t(char **tab)
+{
+	int i;
+	struct stat first;
+	struct stat second;
+	char *tmp;
+	int j;
+
+	j = 1;
+	i = 0;
+	while (tab[i])
+		i++;
+	i = 0;
+	while (tab[i])
+	{
+		if ((ft_strchr(tab[i], ':')) == NULL)
+			i++;
+		j = i + 1;
+		while (tab[j])
+		{
+			stat(tab[i], &first);
+			stat(tab[j], &second);
+			if (first.st_mtime < second.st_mtime)
+			{
+				tmp = ft_strdup(tab[i]);
+				tab[i] = ft_strdup(tab[j]);
+				tab[j] = ft_strdup(tmp);
+			}
+			j++;
+		}
+		i++;
+	}
+	return(tab);
+}
