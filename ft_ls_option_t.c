@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 08:43:54 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 09:07:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/16 10:11:50 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ char	**ft_ls_option_t(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		if ((ft_strchr(tab[i], ':')) == NULL)
-			i++;
 		j = i + 1;
 		while (tab[j])
 		{
@@ -43,6 +41,15 @@ char	**ft_ls_option_t(char **tab)
 				tmp = ft_strdup(tab[i]);
 				tab[i] = ft_strdup(tab[j]);
 				tab[j] = ft_strdup(tmp);
+			}
+			if (first.st_mtime == second.st_mtime)
+			{
+				if ((ft_strcmp(tab[i], tab[j])) > 0)
+				{
+					tmp = ft_strdup(tab[i]);
+					tab[i] = ft_strdup(tab[j]);
+					tab[j] = ft_strdup(tmp);
+				}
 			}
 			j++;
 		}
