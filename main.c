@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 08:57:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/16 11:10:12 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(int argc, char **argv)
 				tab = ft_ls_option_r(tab_argv);
 			if (flags & OPT_L)
 			{
+				tab = ft_ls_path(tab_argv, tab);
 				ft_ls_option_l_permissions(tab);
 			}
 			else

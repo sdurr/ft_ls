@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 15:13:11 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/16 10:43:59 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 		{
 			if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 			{
-				if (argc > 2)
+				if (c > 2)
 					if (!(tab[j++] = ft_strjoin(argv[i], ":")))
 						return (NULL);
 				while ((read = readdir(dirp)) != NULL) // lecture argv

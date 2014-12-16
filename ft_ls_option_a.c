@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/11 12:52:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/16 10:41:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char 		**ft_ls_option_a(char **argv, int argc, int nb)
 	{
 			if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
 			{
-				if (argc > nb)
+				if (argc - nb > 2)
 				{
 					tab[j] = ft_strjoin(argv[i], ":");
 					j++;

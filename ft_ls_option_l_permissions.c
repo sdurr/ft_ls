@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 15:30:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/16 12:10:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void 		ft_ls_option_l_permissions(char **tab)
 	int count;
 	int c;
 
+	count = 0;
+	c = 0;
+	if (tab[count] == )
+	while (tab[count])
+	{
+		stat(tab[count], &sb);
+		c = c + sb.st_blocks;
+		count++;
+	}
+	ft_putstr("total ");
+	ft_putnbr(c);
+	ft_putchar ('\n');
+	c = 0;
 	count = 0;
 	while (tab[count])
 	{
@@ -87,6 +100,11 @@ void 		ft_ls_option_l_permissions(char **tab)
 		ft_noms_proprietaire(tab[count]);
 		ft_putstr(" ");
 		ft_time(tab[count]);
+		if ((ft_strrchr(tab[count], '/')) != NULL)
+		{
+			tab[count] = ft_strrchr(tab[count], '/');
+			tab[count]++;
+		}
 		ft_putstr(tab[count]);
 		ft_putchar('\n');
 		count++;
