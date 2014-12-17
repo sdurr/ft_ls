@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 14:55:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 15:23:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int		main(int argc, char **argv)
 		return (0);
 	tab_argv = copy_argv(argv, nb_argv, argc);
 	tab = ft_ls_argv(tab_argv, argc, nb_argv);
-		if (flags & OPT_A)
-		{
-			tab = ft_ls_option_a(tab_argv, argc, nb_argv);
-		}
-		if (tab_argv[0])
+	if (flags & OPT_A)
+	{
+		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
+	}
+	if (tab_argv[0])
 		{
 			if (flags & OPT_T)
 				tab = ft_ls_option_t(tab);

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 14:57:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 15:21:22 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 					tab_eror = ft_strjoin(tab_eror, ":");
 					tab_eror = ft_strjoin(tab_eror, " No such file or directory");
 					tab_eror = ft_strjoin(tab_eror, "\n");
-					argv[i] = ft_strdup("\n");
+					argv = ft_rm_argv(argv, i);
 				}
 			}
 			i++;
@@ -52,7 +52,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (((dirp = opendir(argv[i])) != NULL) && (ft_strcmp(argv[i], "\n")) != 0) //
+		if ((dirp = opendir(argv[i])) != NULL) //
 		{
 			if (c > 2)
 				if (!(tab[j++] = ft_strjoin(argv[i], ":")))
