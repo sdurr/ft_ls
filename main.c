@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 10:44:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 14:55:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,31 @@ int		main(int argc, char **argv)
 		return (0);
 	tab_argv = copy_argv(argv, nb_argv, argc);
 	tab = ft_ls_argv(tab_argv, argc, nb_argv);
-	if (flags & OPT_A)
-	{
-		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
-	}
-	if (tab_argv[0])
-	{
-		if (flags & OPT_T)
-			tab = ft_ls_option_t(tab);
-		if (flags & OPT_R)
+		if (flags & OPT_A)
 		{
+			tab = ft_ls_option_a(tab_argv, argc, nb_argv);
+		}
+		if (tab_argv[0])
+		{
+			if (flags & OPT_T)
+				tab = ft_ls_option_t(tab);
+			if (flags & OPT_R)
+			{
 				tab_argv = ft_ls_option_r(tab_argv);
 				tab = ft_ls_option_r(tab);
-		}
-		if (flags & OPT_L)
-		{
-			tab = ft_ls_path(tab_argv, tab);
-			ft_ls_option_l_permissions(tab);
+			}
+			if (flags & OPT_L)
+			{
+				tab = ft_ls_path(tab_argv, tab);
+				ft_ls_option_l_permissions(tab);
+			}
+			else
+				ft_print_tab(tab);
 		}
 		else
-				ft_print_tab(tab);
-	}
-	else
-	{
-		if (flags & OPT_T)
-			tab = ft_ls_option_t(tab);
+		{
+			if (flags & OPT_T)
+				tab = ft_ls_option_t(tab);
 		if (flags & OPT_R)
 			tab = ft_ls_option_r(tab);
 		if (flags & OPT_L)
@@ -65,8 +65,7 @@ int		main(int argc, char **argv)
 		}
 		else
 			ft_print_tab(tab);
-	}
-
+		}
 //	ft_print_tab(tab);
 		return (0);
 }

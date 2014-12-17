@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 10:51:11 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 15:01:20 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,68 +25,17 @@ void 		ft_ls_option_l_permissions(char **tab)
 
 	count = 0;
 	c = 0;
+	if ((ft_strchr(tab[count], ':')) == NULL)
+		ft_total_blocks(tab);
 	while (tab[count])
 	{
+		if ((ft_strchr(tab[count], ':')) != NULL)
+		{
+				ft_total_blocks(tab);
+				count++;
+		}
 		stat(tab[count], &sb);
-		c = c + sb.st_blocks;
-		count++;
-	}
-	ft_putstr("total ");
-	ft_putnbr(c);
-	ft_putchar ('\n');
-	c = 0;
-	count = 0;
-	while (tab[count])
-	{
-		stat(tab[count], &sb);
-		if (S_ISREG(sb.st_mode))
-			ft_putchar('-');
-		if (S_ISLNK(sb.st_mode))
-			ft_putchar('l');
-		if (S_ISDIR(sb.st_mode))
-			ft_putchar ('d');
-		if (S_ISBLK(sb.st_mode))
-			ft_putchar('b');
-		if (S_ISCHR(sb.st_mode))
-			ft_putchar('c');
-		if (S_ISFIFO(sb.st_mode))
-			ft_putchar('|');
-		if (sb.st_mode & S_IRUSR)
-			ft_putchar('r');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IWUSR)
-			ft_putchar('w');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IXUSR)
-			ft_putchar('x');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IRGRP)
-			ft_putchar('r');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IWGRP)
-			ft_putchar('w');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IXGRP)
-			ft_putchar('x');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IROTH)
-			ft_putchar('r');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IWOTH)
-			ft_putchar('w');
-		else
-			ft_putchar('-');
-		if (sb.st_mode & S_IXOTH)
-			ft_putchar('x');
-		else
-			ft_putchar('-');
+		ft_permission(tab[count]);
 		c = ft_count_sous_dossiers(tab[count]);
 		if (c < 10)
 			ft_putstr("   ");
@@ -94,6 +43,8 @@ void 		ft_ls_option_l_permissions(char **tab)
 			ft_putstr("  ");
 		else if (c < 999 && c > 99)
 			ft_putstr(" ");
+		else
+			ft_putstr("");
 		ft_putnbr(c);
 		ft_putstr(" ");
 		ft_noms_proprietaire(tab[count]);

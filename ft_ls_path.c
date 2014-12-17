@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 10:46:55 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 10:46:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 14:54:57 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**ft_ls_path(char **tab_argv, char **tab)
 	}
 	else
 	{
-		i = 1;
+		i = 0;
 		while (tab_argv[j])
 		{
 			while (tab[i] && (ft_strchr(tab[i], ':')) != NULL)

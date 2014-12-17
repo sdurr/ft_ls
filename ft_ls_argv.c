@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 11:06:01 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 14:57:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 	i = 0;
 	j = 0;
 	if (c > 0)
-		if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) +1)))
+		if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) + 1)))
 			return (NULL);
 	while (argv[i])
 		{
@@ -40,6 +40,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 				{
 					tab_eror = ft_strjoin(tab_eror, "ft_ls: ");
 					tab_eror = ft_strjoin(tab_eror, argv[i]);
+					tab_eror = ft_strjoin(tab_eror, ":");
 					tab_eror = ft_strjoin(tab_eror, " No such file or directory");
 					tab_eror = ft_strjoin(tab_eror, "\n");
 					argv[i] = ft_strdup("\n");
@@ -51,9 +52,7 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 	i = 0;
 	while (argv[i])
 	{
-		if ((ft_strcmp(argv[i], "\n")) == 0)
-			i++;
-		if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
+		if (((dirp = opendir(argv[i])) != NULL) && (ft_strcmp(argv[i], "\n")) != 0) //
 		{
 			if (c > 2)
 				if (!(tab[j++] = ft_strjoin(argv[i], ":")))
@@ -65,10 +64,12 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 					j++;
 			}
 		}
+		else
+			tab[j++] = ft_strdup("\n");
 		i++;
 	}
 	tab[j] = NULL;
-	if (c == 1)
+		if (c == 1)
 		tab = ft_ls(argv);
 	return (tab);
 }
