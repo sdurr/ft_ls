@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 10:41:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 10:25:12 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,16 @@ char 		**ft_ls_option_a(char **argv, int argc, int nb)
 		return (NULL);
 	while (argv[i])
 	{
-		if ((dirp = opendir(argv[i])) == NULL && i > 1)
+		if ((dirp = opendir(argv[i])) == NULL)
 		{
-			tab[j] = ft_strjoin("ft_ls: ", argv[i]);
-			tab[j] = ft_strjoin(tab[j], " No such file or directory");
-			j++;
+			if ((tab[j] = test_files(argv[i])) == NULL)
+			{
+				tab[j] = ft_strjoin("ft_ls: ", argv[i]);
+				tab[j] = ft_strjoin(tab[j], " No such file or directory");
+				j++;
+			}
+			else
+				j++;
 		}
 		i++;
 	}
@@ -50,8 +55,7 @@ char 		**ft_ls_option_a(char **argv, int argc, int nb)
 				}
 				while ((read = readdir(dirp)) != NULL) // lecture argv
 				{
-					if (!(tab[j] = ft_strdup(read -> d_name)))
-						return (NULL);
+					tab[j] = ft_strdup(read -> d_name);
 					j++;
 				}
 			}

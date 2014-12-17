@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 12:10:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 10:51:11 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void 		ft_ls_option_l_permissions(char **tab)
 
 	count = 0;
 	c = 0;
-	if (tab[count] == )
 	while (tab[count])
 	{
 		stat(tab[count], &sb);

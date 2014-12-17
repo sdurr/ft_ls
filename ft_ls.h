@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 11:07:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 09:42:44 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_count_sous_dossiers(char *tab); // count le nom de dossier dans un dossi
 int		ft_ls_count_files(char **argv); // conte le nb de fichier dossiers
 int		ft_ls_count_files_R(char **argv, int nb_argv, int argc); //conte nb files dock and sous files
 int		test_option(char **argv, int *nb); // test options with bitwise
+char 	*test_files(char *argv);
 char	**ft_tab_argv_open(char **tab);
 char	**ft_ls_path(char **tab_argv, char **tab);
 void	ft_print_tab(char **tab);

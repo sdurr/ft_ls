@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 10:46:55 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 11:09:41 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/17 10:46:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,21 @@ char	**ft_ls_path(char **tab_argv, char **tab)
 	{
 		while (tab[i])
 		{
-			new_tab[k] = ft_strdup(tab_argv[j]);
-			new_tab[k] = ft_strjoin(new_tab[k], "/");
-			new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
-			i++;
-			k++;
+			if ((test_files(tab[i])) == NULL)
+				{
+					new_tab[k] = ft_strdup(tab_argv[j]);
+					new_tab[k] = ft_strjoin(new_tab[k], "/");
+					new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
+					i++;
+					k++;
+				}
+			else
+			{
+				new_tab[k] = ft_strdup("./");
+				new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
+				i++;
+				k++;
+			}
 		}
 	}
 	else
