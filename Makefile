@@ -6,13 +6,14 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/17 09:02:37 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/19 09:04:06 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/19 11:48:22 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		= ft_ls
 
 SRC			= check_option_illegal.c \
+				copy_argv_2.c \
 				test_directory.c \
 				ft_rm_argv.c \
 				ft_total_blocks.c \

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 10:25:12 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 11:15:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char 		**ft_ls_option_a(char **argv, int argc, int nb)
 	j = 0;
 	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) + 1)))
 		return (NULL);
-	while (argv[i])
+/*	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) == NULL)
 		{
@@ -42,7 +42,7 @@ char 		**ft_ls_option_a(char **argv, int argc, int nb)
 				j++;
 		}
 		i++;
-	}
+		}*/
 	i = 0;
 	while (argv[i])
 	{

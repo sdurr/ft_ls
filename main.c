@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 15:23:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 13:49:50 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int		main(int argc, char **argv)
 	if ((flags = test_option(argv, &nb_argv)) == -1)
 		return (0);
 	tab_argv = copy_argv(argv, nb_argv, argc);
+
 	tab = ft_ls_argv(tab_argv, argc, nb_argv);
+	tab_argv = copy_argv_2(tab_argv, nb_argv);
+	ft_putstr("tab_argv = ");
+
+	ft_print_tab(tab_argv);
 	if (flags & OPT_A)
 	{
 		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
@@ -48,7 +53,8 @@ int		main(int argc, char **argv)
 			if (flags & OPT_L)
 			{
 				tab = ft_ls_path(tab_argv, tab);
-				ft_ls_option_l_permissions(tab);
+				ft_print_tab(tab);
+				ft_ls_option_l(tab);
 			}
 			else
 				ft_print_tab(tab);
@@ -61,7 +67,7 @@ int		main(int argc, char **argv)
 			tab = ft_ls_option_r(tab);
 		if (flags & OPT_L)
 		{
-			ft_ls_option_l_permissions(tab);
+			ft_ls_option_l(tab);
 		}
 		else
 			ft_print_tab(tab);

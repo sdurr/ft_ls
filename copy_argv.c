@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 10:20:26 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 09:58:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 13:21:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	**copy_argv(char **av, int nb, int ac)
 	i = 0;
 	if (!(new_av = (char**)malloc(sizeof(char *) * ac - nb)))
 		return (NULL);
+
 	while (av[++nb])
 	{
 		if (av[nb][0] == '-')

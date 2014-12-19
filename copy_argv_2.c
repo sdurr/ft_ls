@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rm_argv.c                                       :+:      :+:    :+:   */
+/*   copy_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/17 15:10:49 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 13:23:45 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/11 10:20:26 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/19 14:00:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_ls.h"
 #include <stdlib.h>
 #include "libft.h"
 
-char	**ft_rm_argv(char **argv, int i, int *nb)
+char	**copy_argv_2(char **av, int nb)
 {
-	int c;
-	char **new_argv;
-	int j;
+	char	**new_av;
+	int		i;
 
-	j = 0;
-	c = 0;
-	while (argv[c])
-		c++;
-	if (!(new_argv = (char **)malloc(sizeof(char *) * c)))
+	i = 0;
+	if (!(new_av = (char**)malloc(sizeof(char *) * nb + 1)))
 		return (NULL);
-	c = 0;
-	while (argv[c] && c < i)
+	nb = 0;
+	while (av[++nb])
 	{
-		new_argv[j] = ft_strdup(argv[c]);
-		c++;
-		j++;
+		if (av[nb][0] == '-')
+		{
+			check_option_illegal(av[nb]);
+			return (NULL);
+		}
+		else
+		{
+			new_av[i] = ft_strdup(av[nb]);
+			i++;
+		}
+			ft_putnbr(i);
+
 	}
-	c++;
-	while (argv[c])
+	if (i > 0)
+		new_av[i] = NULL;
+	else
 	{
-		new_argv[j] = ft_strdup(argv[c]);
-		j++;
-		c++;
+		new_av[i] = ft_strdup(".");
+		new_av[i + 1] = NULL;
 	}
-	*nb = *nb -1;
-	new_argv[j] = NULL;
-	return (new_argv);
+	return (new_av);
 }

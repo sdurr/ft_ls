@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 15:21:22 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 13:23:59 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +44,15 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 					tab_eror = ft_strjoin(tab_eror, ":");
 					tab_eror = ft_strjoin(tab_eror, " No such file or directory");
 					tab_eror = ft_strjoin(tab_eror, "\n");
-					argv = ft_rm_argv(argv, i);
+					argv = ft_rm_argv(argv, i, &c);
+			i--;
 				}
 			}
 			i++;
 		}
 	ft_putstr(tab_eror);
 	i = 0;
+	c = argc - nb_argv;
 	while (argv[i])
 	{
 		if ((dirp = opendir(argv[i])) != NULL) //
@@ -64,12 +67,10 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 					j++;
 			}
 		}
-		else
-			tab[j++] = ft_strdup("\n");
 		i++;
 	}
 	tab[j] = NULL;
-		if (c == 1)
+	if (c == 1)
 		tab = ft_ls(argv);
 	return (tab);
 }
