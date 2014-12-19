@@ -7,7 +7,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 13:23:59 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 14:08:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
+char 		**ft_ls_argv(char **argv, int argc, int nb_argv, char ***tab_argv)
 {
 	DIR *dirp;
 	struct dirent *read;
@@ -45,7 +45,8 @@ char 		**ft_ls_argv(char **argv, int argc, int nb_argv)
 					tab_eror = ft_strjoin(tab_eror, " No such file or directory");
 					tab_eror = ft_strjoin(tab_eror, "\n");
 					argv = ft_rm_argv(argv, i, &c);
-			i--;
+					rm_tab_argv(tab_argv, i);
+						i--;
 				}
 			}
 			i++;

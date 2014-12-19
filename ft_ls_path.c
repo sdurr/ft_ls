@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 10:46:55 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 13:48:41 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 14:22:21 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,29 @@ char	**ft_ls_path(char **tab_argv, char **tab)
 	if (!(new_tab = (char **)malloc(sizeof(char *) * i + 1)))
 		return(NULL);
 	i = 0;
-	ft_print_tab(tab);
-	while(tab[i])
+	if ((ft_strchr(tab[i], ':')) == NULL)
 	{
-		if ((ft_strchr(tab[i], ':')) == NULL)
+		while (tab[i])
 		{
 			if ((test_files(tab[i])) == NULL)
-				{
-						new_tab[k] = ft_strdup(tab_argv[j]);
-						new_tab[k] = ft_strjoin(new_tab[k], "/");
-					new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
-					i++;
-					k++;
-				}
-			else
+            {
+                new_tab[k] = ft_strdup(tab_argv[j]);
+                new_tab[k] = ft_strjoin(new_tab[k], "/");
+                new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
+                i++;
+                k++;
+            }
+/*			else
 			{
-				ft_putstr("testfsdkjfk");
-//				ft_putstr(new_tab[k]);
 				new_tab[k] = ft_strdup("./");
 				new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
 				i++;
 				k++;
-			}
+				}*/
 		}
-		else
-			i++;
 	}
-		/*{
+	else
+	{
 		i = 0;
 		while (tab_argv[j])
 		{
@@ -68,10 +64,7 @@ char	**ft_ls_path(char **tab_argv, char **tab)
 			}
 			j++;
 		}
-		}*/
+	}
 	new_tab[k] = NULL;
-	ft_putstr("tab=\n");
-	ft_print_tab(new_tab);
-	ft_putstr("\ntab=");
 	return (new_tab);
 }
