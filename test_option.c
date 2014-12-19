@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 12:48:04 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 10:34:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 17:40:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		test_option(char **argv, int *nb)
 	i = 1;
 	j = 0;
 	flags = 0;
+	*nb = 0;
 	while (argv[i]) // nb arguments
 	{
 		if (argv[i][j] == '-')
@@ -35,18 +36,13 @@ int		test_option(char **argv, int *nb)
 				else if (argv[i][j] == 't')
 					flags = flags | OPT_T;
 				else if (argv[i][j] == 'l')
-				{
-				flags = flags | OPT_L;
-				}
+					flags = flags | OPT_L;
 				else if (argv[i][j] == 'r')
 					flags = flags | OPT_R;
 				else if (argv[i][j] == 'R')
 					flags = flags | OPT_R_R;
 				else
-				{
-					check_option_illegal(argv[i]);
-					return (-1);
-				}
+					return (check_option_illegal(argv[i]));
 				j++;
 			}
 		}
@@ -56,5 +52,5 @@ int		test_option(char **argv, int *nb)
 		i++;
 		*nb = *nb + 1;
 	}
-	return (flags); // pas d'argv a pars les flags
+return (flags);
 }

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 10:46:55 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 14:22:21 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 14:46:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	**ft_ls_path(char **tab_argv, char **tab)
 	if (!(new_tab = (char **)malloc(sizeof(char *) * i + 1)))
 		return(NULL);
 	i = 0;
+//	ft_putstr(tab_argv[i]);
 	if ((ft_strchr(tab[i], ':')) == NULL)
 	{
 		while (tab[i])
@@ -40,13 +41,13 @@ char	**ft_ls_path(char **tab_argv, char **tab)
                 i++;
                 k++;
             }
-/*			else
+			else
 			{
 				new_tab[k] = ft_strdup("./");
 				new_tab[k] = ft_strjoin(new_tab[k], tab[i]);
 				i++;
 				k++;
-				}*/
+			}
 		}
 	}
 	else

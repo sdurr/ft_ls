@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 11:29:40 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 14:54:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void 		ft_ls_option_l(char **tab)
 
 	count = 0;
 	c = 0;
-	if ((ft_strchr(tab[count], ':')) == NULL)
+	if ((ft_strchr(tab[count], ':')) == NULL && tab[count] && (test_files(tab[count])) == NULL)
 		ft_total_blocks(tab);
 	while (tab[count])
 	{

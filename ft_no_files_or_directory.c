@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rm_argv.c                                       :+:      :+:    :+:   */
+/*   ft_no_files_or_directory.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/17 15:10:49 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 15:33:55 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/19 15:42:54 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/19 15:47:47 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include "libft.h"
+#include "ft_ls.h"
 
-char	**ft_rm_argv(char **argv, int i)
+char	**ft_no_files_or_directory(char **argv, int j, char ***tab_argv)
 {
-	int c;
-	char **new_argv;
-	int j;
-
-	j = 0;
-	c = 0;
-	while (argv[c])
-		c++;
-	if (!(new_argv = (char **)malloc(sizeof(char *) * c)))
-		return (NULL);
-	c = 0;
-	while (argv[c] && c < i)
-	{
-		new_argv[j] = ft_strdup(argv[c]);
-		c++;
-		j++;
-	}
-	c++;
-	while (argv[c])
-	{
-		new_argv[j] = ft_strdup(argv[c]);
-		j++;
-		c++;
-	}
-	new_argv[j] = NULL;
-	return (new_argv);
+	ft_putstr("ft_ls: ");
+	ft_putstr(argv[j]);
+	ft_putstr(":");
+	ft_putstr(" No such file or directory");
+	ft_putstr("\n");
+	argv = ft_rm_argv(argv, j);
+	rm_tab_argv(tab_argv, j);
+	return (argv);
 }
