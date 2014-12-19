@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 12:48:04 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 17:40:53 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 18:33:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		test_option(char **argv, int *nb)
 	j = 0;
 	flags = 0;
 	*nb = 0;
-	while (argv[i]) // nb arguments
+	while (argv[i])
 	{
 		if (argv[i][j] == '-')
 		{
@@ -51,6 +51,7 @@ int		test_option(char **argv, int *nb)
 		j = 0;
 		i++;
 		*nb = *nb + 1;
+		ft_putnbr(*nb);
 	}
 return (flags);
 }

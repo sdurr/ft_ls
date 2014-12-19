@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 14:54:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 18:37:36 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-void 		ft_ls_option_l(char **tab)
+void	ft_ls_option_l(char **tab)
 {
 	struct stat sb;
-	int count;
-	int c;
+	int			count;
+	int			c;
 
 	count = 0;
 	c = 0;
-	if ((ft_strchr(tab[count], ':')) == NULL && tab[count] && (test_files(tab[count])) == NULL)
+	if ((ft_strchr(tab[count], ':')) == NULL && tab[count]
+		&& (test_files(tab[count])) == NULL)
 		ft_total_blocks(tab);
+	ft_print_tab(tab);
 	while (tab[count])
 	{
 		if ((ft_strchr(tab[count], ':')) != NULL)
 		{
-				ft_total_blocks(tab);
-				ft_putstr(tab[count]);
-				count++;
-		}
-		if ((stat(tab[count], &sb)) == -1)
-		{
+			ft_total_blocks(tab);
+			ft_putstr(tab[count]);
 			count++;
 		}
+		if ((stat(tab[count], &sb)) == -1)
+			count++;
 		ft_permission(tab[count]);
 		c = ft_count_sous_dossiers(tab[count]);
 		if (c < 10)
@@ -49,11 +49,7 @@ void 		ft_ls_option_l(char **tab)
 			ft_putstr(" ");
 		else
 			ft_putstr("");
-		ft_putnbr(c);
-		ft_putstr(" ");
-		ft_noms_proprietaire(tab[count]);
-		ft_putstr(" ");
-		ft_time(tab[count]);
+		ft_opt_l_uid_time(tab, count, c);
 		if ((ft_strrchr(tab[count], '/')) != NULL)
 		{
 			tab[count] = ft_strrchr(tab[count], '/');

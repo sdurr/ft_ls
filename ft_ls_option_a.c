@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 11:15:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 18:07:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,64 +16,31 @@
 #include "libft.h"
 #include <stdio.h>
 
-char 		**ft_ls_option_a(char **argv, int argc, int nb)
+char	**ft_ls_option_a(char **argv, int argc, int nb)
 {
-	DIR *dirp;
-	struct dirent *read;
-	char **tab;
-	int j;
-	int i;
+	DIR				*dirp;
+	struct dirent	*read;
+	char			**tab;
+	int				j;
+	int				i;
 
 	i = 0;
 	j = 0;
 	if (!(tab = (char **)malloc(sizeof(char *) * ft_ls_count_files(argv) + 1)))
 		return (NULL);
-/*	while (argv[i])
-	{
-		if ((dirp = opendir(argv[i])) == NULL)
+	i = -1;
+	while (argv[++i])
+		if ((dirp = opendir(argv[i])) != NULL)
 		{
-			if ((tab[j] = test_files(argv[i])) == NULL)
-			{
-				tab[j] = ft_strjoin("ft_ls: ", argv[i]);
-				tab[j] = ft_strjoin(tab[j], " No such file or directory");
-				j++;
-			}
-			else
-				j++;
+			if (argc - nb > 2)
+				tab[j++] = ft_strjoin(argv[i], ":");
+			while ((read = readdir(dirp)) != NULL)
+				tab[j++] = ft_strdup(read->d_name);
 		}
-		i++;
-		}*/
-	i = 0;
-	while (argv[i])
-	{
-			if ((dirp = opendir(argv[i])) != NULL) // ouverture argv[1] pointeur sur flux
-			{
-				if (argc - nb > 2)
-				{
-					tab[j] = ft_strjoin(argv[i], ":");
-					j++;
-				}
-				while ((read = readdir(dirp)) != NULL) // lecture argv
-				{
-					tab[j] = ft_strdup(read -> d_name);
-					j++;
-				}
-			}
-			i++;
-	}
-	i = 0;
-	if (!argv[i])
-	{
-		if ((dirp = opendir(".")) != NULL) // ouverture argv[1] pointeur sur flux
-		{
-			while ((read = readdir(dirp)) != NULL) // lecture argv
-			{
-				if (!(tab[j] = ft_strdup(read -> d_name)))
-					return (NULL);
-				j++;
-			}
-		}
-	}
+	if (!argv[0])
+		if ((dirp = opendir(".")) != NULL)
+			while ((read = readdir(dirp)) != NULL)
+				tab[j++] = ft_strdup(read->d_name);
 	tab[j] = NULL;
 	return (tab);
 }

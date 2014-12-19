@@ -7,7 +7,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 17:39:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 18:14:56 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	**ft_ls_argv(char **argv, int argc, int nb_argv, char ***tab_argv);
 int		check_option_illegal(char *argv); // check quel option et renvoi vers la fonction
 char	**ft_ls_option_a(char **argv, int argc, int nb); // option -a
 void	ft_ls_option_l(char **tab); //option -l
+void	ft_opt_l_uid_time(char **tab, int count, int c);
 char	**ft_ls_option_r(char **tab); // option -r
 char	**ft_ls_option_t(char **tab); // option -t
 char	**ft_no_files_or_directory(char **argv, int j, char ***tab_argv);

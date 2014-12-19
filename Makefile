@@ -6,13 +6,14 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/17 09:02:37 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/19 17:42:09 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/19 18:14:04 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		= ft_ls
 
 SRC			= check_option_illegal.c \
+				ft_opt_l_uid_time.c \
 				ft_no_files_or_directory.c \
 				rm_tab_argv.c \
 				test_directory.c \
