@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_argv.c                                        :+:      :+:    :+:   */
+/*   test_directory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/11 10:20:26 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 09:58:51 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/19 08:51:42 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/19 09:02:36 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include <dirent.h>
 #include <stdlib.h>
 #include "libft.h"
 
-char	**copy_argv(char **av, int nb, int ac)
+char	*test_directory(char *tab)
 {
-	char	**new_av;
-	int		i;
+	DIR *dirp;
+	char *ret;
 
-	i = 0;
-	if (!(new_av = (char**)malloc(sizeof(char *) * ac - nb)))
-		return (NULL);
-	while (av[++nb])
-	{
-		if (av[nb][0] == '-')
-		{
-			check_option_illegal(av[nb]);
-			return (NULL);
-		}
-		new_av[i] = ft_strdup(av[nb]);
-		i++;
-	}
-	if (i > 0)
-		new_av[i] = NULL;
+	ret = ft_strdup("ok");
+	if ((dirp = opendir(tab)) != NULL)
+		return (ret);
 	else
-	{
-		new_av[i] = ft_strdup(".");
-		new_av[i + 1] = NULL;
-	}
-	return (new_av);
+		return (NULL);
+	return (NULL);
 }
