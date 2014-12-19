@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:35:51 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 18:37:36 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/19 19:48:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ void	ft_ls_option_l(char **tab)
 	if ((ft_strchr(tab[count], ':')) == NULL && tab[count]
 		&& (test_files(tab[count])) == NULL)
 		ft_total_blocks(tab);
-	ft_print_tab(tab);
 	while (tab[count])
 	{
 		if ((ft_strchr(tab[count], ':')) != NULL)
 		{
+/* creer une fonction qui va calculer le nombre de bloc depuis : jusqu'au prochain : */
 			ft_total_blocks(tab);
+			ft_putchar ('\n');
 			ft_putstr(tab[count]);
+			ft_putchar ('\n');
 			count++;
 		}
 		if ((stat(tab[count], &sb)) == -1)
