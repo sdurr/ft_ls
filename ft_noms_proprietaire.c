@@ -43,7 +43,7 @@ void 	ft_noms_proprietaire(char *av)
 		ft_putstr("     ");
 	if (c > 9 && c < 100)
 		ft_putstr("      ");
-	if (c > 0 && c < 10)
+	if (c >= 0 && c < 10)
 		ft_putstr("       ");
 	ft_putnbr(sb.st_size);
 }

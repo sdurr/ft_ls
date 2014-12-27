@@ -24,25 +24,21 @@ char	**ft_ls_option_t(char **tab)
 	char *tmp;
 	int j;
 
-	j = 1;
-	i = 0;
-	while (tab[i])
-		i++;
 	i = 0;
 	while (tab[i])
 	{
-		j = i + 1;
+		j = i;
 		while (tab[j])
 		{
 			stat(tab[i], &first);
 			stat(tab[j], &second);
-			if (first.st_mtime < second.st_mtime)
+			if (first.st_mtime < second.st_mtime && (ft_strchr(tab[i], ':')) == NULL)
 			{
 				tmp = ft_strdup(tab[i]);
 				tab[i] = ft_strdup(tab[j]);
 				tab[j] = ft_strdup(tmp);
 			}
-			if (first.st_mtime == second.st_mtime)
+			if (first.st_mtime == second.st_mtime && (ft_strchr(tab[i], ':')) == NULL)
 			{
 				if ((ft_strcmp(tab[i], tab[j])) > 0)
 				{

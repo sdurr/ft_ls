@@ -23,6 +23,8 @@
 char	**ft_ls(char **argv); // s'il n'y a pas d'argv en parametre
 char	**ft_ls_argv(char **argv, int argc, int nb_argv, char ***tab_argv);
 int		check_option_illegal(char *argv); // check quel option et renvoi vers la fonction
+void    ft_tab_blocks(char **tab, int count);
+char    **ft_ls_r_argv(char **tab);
 char	**ft_ls_option_a(char **argv, int argc, int nb); // option -a
 void	ft_ls_option_l(char **tab); //option -l
 void	ft_opt_l_uid_time(char **tab, int count, int c);

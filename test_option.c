@@ -51,7 +51,6 @@ int		test_option(char **argv, int *nb)
 		j = 0;
 		i++;
 		*nb = *nb + 1;
-		ft_putnbr(*nb);
 	}
 return (flags);
 }
