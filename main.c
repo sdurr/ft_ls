@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 18:36:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/28 15:48:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		main(int argc, char **argv)
 	char	**tab_argv;
 	int		nb_argv;
 
-	if ((flags = test_option(argv, &nb_argv)) == -1)
+	nb_argv = 0;
+	if ((flags = test_option(argv, &nb_argv, 0, 0)) == -1)
 		return (0);
 	if ((tab_argv = copy_argv(argv, nb_argv, argc)) == NULL)
 		return (0);

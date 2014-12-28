@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 12:48:04 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 18:33:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/28 15:47:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,15 @@
 #include <stdio.h>
 #include "libft.h"
 
-int		test_option(char **argv, int *nb)
+int		test_option(char **argv, int *nb, int i, int j)
 {
 	unsigned int flags;
-	int i;
-	int j;
 
-	i = 1;
-	j = 0;
 	flags = 0;
-	*nb = 0;
-	while (argv[i])
+	while (argv[++i])
 	{
 		if (argv[i][j] == '-')
-		{
-			j++;
-			while (argv[i][j])
+			while (argv[i][++j])
 			{
 				if (argv[i][j] == 'a')
 					flags = flags | OPT_A;
@@ -43,14 +36,11 @@ int		test_option(char **argv, int *nb)
 					flags = flags | OPT_R_R;
 				else
 					return (check_option_illegal(argv[i]));
-				j++;
 			}
-		}
 		else
-			return (flags); // si ce n'est plus des flags return (fonction with flags)
+			return (flags);
 		j = 0;
-		i++;
 		*nb = *nb + 1;
 	}
-return (flags);
+	return (flags);
 }
