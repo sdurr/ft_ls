@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 08:43:54 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/16 10:11:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 12:22:23 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char	**ft_ls_option_t(char **tab)
+static char **ft_transfer(char **tab, int i, int j)
 {
-	int i;
+	char		*tmp;
+
+	tmp = ft_strdup(tab[i]);
+	tab[i] = ft_strdup(tab[j]);
+	tab[j] = ft_strdup(tmp);
+	return (tab);
+}
+
+char		**ft_ls_option_t(char **tab, int i, int j, char **tab_old)
+{
 	struct stat first;
 	struct stat second;
-	char *tmp;
-	int j;
 
-	i = 0;
+	if ((ft_strchr(tab[i], ':')) != NULL)
+		return (ft_ls_t_argv(tab_old));
 	while (tab[i])
 	{
 		j = i;
@@ -32,24 +40,14 @@ char	**ft_ls_option_t(char **tab)
 		{
 			stat(tab[i], &first);
 			stat(tab[j], &second);
-			if (first.st_mtime < second.st_mtime && (ft_strchr(tab[i], ':')) == NULL)
-			{
-				tmp = ft_strdup(tab[i]);
-				tab[i] = ft_strdup(tab[j]);
-				tab[j] = ft_strdup(tmp);
-			}
-			if (first.st_mtime == second.st_mtime && (ft_strchr(tab[i], ':')) == NULL)
-			{
+			if (first.st_mtime < second.st_mtime)
+				tab = ft_transfer(tab, i, j);
+			if (first.st_mtime == second.st_mtime)
 				if ((ft_strcmp(tab[i], tab[j])) > 0)
-				{
-					tmp = ft_strdup(tab[i]);
-					tab[i] = ft_strdup(tab[j]);
-					tab[j] = ft_strdup(tmp);
-				}
-			}
+					tab = ft_transfer(tab, i, j);
 			j++;
 		}
 		i++;
 	}
-	return(tab);
+	return (tab);
 }

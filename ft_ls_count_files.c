@@ -6,13 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 16:01:31 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/19 17:57:38 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 12:27:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <dirent.h>
 #include <stdlib.h>
+#include "libft.h"
 
 int		ft_ls_count_files(char **argv)
 {
@@ -34,5 +35,7 @@ int		ft_ls_count_files(char **argv)
 					i++;
 			j++;
 		}
+	ft_putnbr(i);
+	ft_putchar ('\n');
 	return (i);
 }

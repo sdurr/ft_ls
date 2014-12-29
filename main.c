@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:59 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/28 15:48:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 12:25:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 	if (flags & OPT_A)
 		tab = ft_ls_option_a(tab_argv, argc, nb_argv);
 	if (flags & OPT_T)
-		tab = ft_ls_option_t(tab);
+		tab = ft_ls_option_t(ft_ls_path(tab_argv, tab), 0, 0, tab);
 	if (flags & OPT_R)
 	{
 		tab_argv = ft_ls_option_r(tab_argv);

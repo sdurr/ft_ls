@@ -6,13 +6,14 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/17 09:02:37 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/19 18:14:04 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/29 12:00:01 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		= ft_ls
 
 SRC			= check_option_illegal.c \
+				ft_ls_t_argv.c \
 				ft_ls_r_argv.c \
 				ft_tab_blocks.c \
 				ft_opt_l_uid_time.c \
@@ -58,7 +59,7 @@ all		:		$(NAME)
 
 fclean	:		clean
 				$(RM) $(NAME)
-
+				$(RM) *~
 
 re		:		fclean all
 
