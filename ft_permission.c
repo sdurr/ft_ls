@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/17 13:08:07 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/17 13:18:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 11:17:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		ft_permission(char *tab)
 {
 	struct stat sb;
 
-	stat(tab, &sb);
+	lstat(tab, &sb);
 	if (S_ISREG(sb.st_mode))
 		ft_putchar('-');
 	if (S_ISLNK(sb.st_mode))

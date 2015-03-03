@@ -7,7 +7,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 09:33:10 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 12:22:10 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 14:22:10 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@
 # define OPT_T 16
 # define OPT_R 32
 # define OPT_R_R 64
+# define OPT_R_S 128
 
 char	**ft_ls(char **argv); // s'il n'y a pas d'argv en parametre
 char	**ft_ls_argv(char **argv, int argc, int nb_argv, char ***tab_argv);
 int		check_option_illegal(char *argv); // check quel option et renvoi vers la fonction
 void    ft_tab_blocks(char **tab, int count);
 char    **ft_ls_r_argv(char **tab);
+char    **ft_ls_r(char **tab);
 char	**ft_ls_option_a(char **argv, int argc, int nb); // option -a
 void	ft_ls_option_l(char **tab); //option -l
 void	ft_opt_l_uid_time(char **tab, int count, int c);
 char	**ft_ls_option_r(char **tab); // option -r
+char	**ft_ls_option_r_r(char **tab); // option -r
 char	**ft_ls_option_t(char **tab, int i, int j, char **tab_old); // option -t
 char	**ft_ls_t_argv(char **tab);
 char	**ft_no_files_or_directory(char **argv, int j, char ***tab_argv);

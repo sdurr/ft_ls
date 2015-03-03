@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 08:43:54 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 12:22:23 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 11:09:06 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static char **ft_transfer(char **tab, int i, int j)
+static char		**trim(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		tab[i]+=2;
+		i++;
+	}
+	return (tab);
+}
+
+static char		**ft_transfer(char **tab, int i, int j)
 {
 	char		*tmp;
 
@@ -49,5 +62,6 @@ char		**ft_ls_option_t(char **tab, int i, int j, char **tab_old)
 		}
 		i++;
 	}
+	tab = trim(tab);
 	return (tab);
 }

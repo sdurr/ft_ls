@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/17 09:02:37 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/29 12:00:01 by sdurr            ###   ########.fr        #
+#    Updated: 2015/03/03 14:22:24 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME		= ft_ls
 SRC			= check_option_illegal.c \
 				ft_ls_t_argv.c \
 				ft_ls_r_argv.c \
+				ft_ls_r.c \
 				ft_tab_blocks.c \
 				ft_opt_l_uid_time.c \
 				ft_no_files_or_directory.c \
@@ -31,6 +32,7 @@ SRC			= check_option_illegal.c \
 				ft_ls_option_l.c \
 				ft_ls_option_t.c \
 				ft_ls_option_r.c \
+				ft_ls_option_r_r.c \
 				ft_noms_proprietaire.c \
 				ft_print_tab.c \
 				ft_time.c \
@@ -44,7 +46,7 @@ OBJ			= $(SRC:.c=.o)
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+export CFLAGS		= -Wall -Wextra -Werror
 
 RM			= rm -rf
 
@@ -58,6 +60,7 @@ clean	:
 all		:		$(NAME)
 
 fclean	:		clean
+				Make -C libft fclean
 				$(RM) $(NAME)
 				$(RM) *~
 

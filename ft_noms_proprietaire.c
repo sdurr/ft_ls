@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 10:28:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/15 16:16:56 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 11:36:11 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void 	ft_noms_proprietaire(char *av)
 	if (c > 999999)
 		ft_putstr(" ");
 	if (c > 99999 && c < 1000000)
-		ft_putstr("  ");
+		ft_putstr(" ");
 	if (c > 9999 && c < 100000)
-		ft_putstr("   ");
+		ft_putstr("  ");
 	if (c > 999 && c < 10000)
-		ft_putstr("    ");
+		ft_putstr("   ");
 	if (c > 99 && c < 1000)
-		ft_putstr("     ");
+		ft_putstr("    ");
 	if (c > 9 && c < 100)
-		ft_putstr("      ");
+		ft_putstr("     ");
 	if (c >= 0 && c < 10)
-		ft_putstr("       ");
+		ft_putstr("      ");
 	ft_putnbr(sb.st_size);
 }

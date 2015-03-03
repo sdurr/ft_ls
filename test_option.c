@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 12:48:04 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/28 15:47:19 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/04 09:11:12 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		test_option(char **argv, int *nb, int i, int j)
 					flags = flags | OPT_R;
 				else if (argv[i][j] == 'R')
 					flags = flags | OPT_R_R;
+				else if (argv[i][j] == '-')
+					flags = flags | OPT_R_S;
 				else
 					return (check_option_illegal(argv[i]));
 			}
