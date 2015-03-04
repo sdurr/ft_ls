@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/16 08:43:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/03/03 11:09:06 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/04 11:03:09 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ static char		**trim(char **tab)
 	i = 0;
 	while (tab[i] != NULL)
 	{
-		tab[i]+=2;
+		tab[i] = ft_strchr(tab[i], '/');
+			tab[i]+=1;
 		i++;
 	}
 	return (tab);
 }
+
 
 static char		**ft_transfer(char **tab, int i, int j)
 {
@@ -44,20 +46,25 @@ char		**ft_ls_option_t(char **tab, int i, int j, char **tab_old)
 	struct stat first;
 	struct stat second;
 
-	if ((ft_strchr(tab[i], ':')) != NULL)
-		return (ft_ls_t_argv(tab_old));
+	if (tab_old[0])
+		j = 0;
 	while (tab[i])
 	{
 		j = i;
 		while (tab[j])
 		{
-			stat(tab[i], &first);
-			stat(tab[j], &second);
-			if (first.st_mtime < second.st_mtime)
+		if ((ft_strchr(tab[j], ':')) != NULL)
+		{
+			j++;
+			i++;
+		}
+		lstat(tab[i], &first);
+		lstat(tab[j], &second);
+		if (first.st_mtime < second.st_mtime)
+			tab = ft_transfer(tab, i, j);
+		if (first.st_mtime == second.st_mtime)
+			if ((ft_strcmp(tab[i], tab[j])) > 0)
 				tab = ft_transfer(tab, i, j);
-			if (first.st_mtime == second.st_mtime)
-				if ((ft_strcmp(tab[i], tab[j])) > 0)
-					tab = ft_transfer(tab, i, j);
 			j++;
 		}
 		i++;

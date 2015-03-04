@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/17 09:02:37 by sdurr             #+#    #+#              #
-#    Updated: 2015/03/03 14:22:24 by sdurr            ###   ########.fr        #
+#    Updated: 2015/03/04 09:03:55 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,6 +14,8 @@ NAME		= ft_ls
 
 SRC			= check_option_illegal.c \
 				ft_ls_t_argv.c \
+				recursive.c \
+				open_file.c \
 				ft_ls_r_argv.c \
 				ft_ls_r.c \
 				ft_tab_blocks.c \
